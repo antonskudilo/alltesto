@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteBase /
+
+#RewriteCond %{REQUEST_URI} !^/project/webroot/
+#RewriteRule .+ select.php
+
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^.*\.(jpg|css|js|gif|png|php)$ [NC]
+RewriteRule .* index.php [L]
