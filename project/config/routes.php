@@ -2,9 +2,11 @@
 	use \Core\Route;
 	
 	return [
-	    new Route('', 'site', 'select'),
-        new Route('/testing', 'site', 'testing'),
-        new Route('/result', 'site', 'result'),
+        new Route('', 'site', 'index'),
+
+	    new Route('/select', 'test', 'select'),
+        new Route('/testing', 'test', 'testing'),
+        new Route('/result', 'test', 'result'),
 
         new Route('/register', 'user', 'register'),
         new Route('/login', 'user', 'login'),
@@ -13,7 +15,7 @@
         new Route('/cabinet', 'cabinet', 'index'),
         new Route('/cabinet/edit', 'cabinet', 'userEdit'),
 
-//        new Route('/contacts', 'site', 'actionContact'),
+//        new Route('/contacts', 'test', 'actionContact'),
 
     ];
 	

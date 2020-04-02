@@ -2,36 +2,11 @@
 namespace Project\Controllers;
 
 use \Core\Controller;
-use \Project\Models\Test as Test;
+use \Project\Models\Category as Category;
 
 class SiteController extends Controller
 {
-    public  function select()
-    {
-        $this->title = 'главная';
-        return $this->render('site/select', [
-        ]);
-    }
 
-    public function testing()
-    {
-        $this->title = 'тестирование';
-        $test = new Test($_POST['quantity'], $_POST['theme']);
-        $questions = $test->getQuestsList();
-        return $this->render('site/testing', [
-            'questions' => $questions,
-        ]);
-
-    }
-
-    public  function result()
-    {
-        $this->title = 'результат';
-        $result = Test::getResult($_POST);
-        return $this->render('site/result', [
-            'result' => $result,
-        ]);
-    }
 
 //    public function actionContact()
 //    {
@@ -42,4 +17,15 @@ class SiteController extends Controller
 //        var_dump($result);
 //        die;
 //    }
+
+    public  function index(){
+        $this->title = 'главная';
+
+        $categories = array();
+        $categories = Category::getCategoriesList();
+
+        return $this->render('site/index', [
+            'categories' => $categories,
+        ]);
+    }
 }
