@@ -8,6 +8,8 @@ class UserController extends Controller
 {
     public function register()
     {
+        $this->title = 'Регистрация';
+
         $name = '';
         $email = '';
         $password = '';

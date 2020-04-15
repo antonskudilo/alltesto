@@ -5,7 +5,7 @@ namespace Project\Controllers;
 
 use \Core\Controller;
 use \Project\Models\Test as Test;
-class TestController
+class TestController extends Controller
 {
     public  function select()
     {

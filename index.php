@@ -6,9 +6,12 @@
 	error_reporting(E_ALL);
 	ini_set('display_errors', 'off');
 
+    require_once (ROOT.'/project/components/Autoload.php');
+    require_once ROOT . '/vendor/autoload.php';
+//    require_once ROOT . '/vendor/twig/twig/lib/Twig/Autoloader.php';
+
 	session_start();
 
-    require_once (ROOT.'/project/components/Autoload.php');
 	$routes = require ROOT . '/project/config/routes.php';
 
 	$track = ( new Router )      -> getTrack($routes, $_SERVER['REQUEST_URI']);

@@ -15,6 +15,8 @@
         new Route('/cabinet', 'cabinet', 'index'),
         new Route('/cabinet/edit', 'cabinet', 'userEdit'),
 
+        new Route('/blog', 'blog', 'index'),
+        new Route('/blog/:id', 'blog', 'showArticle'),
 //        new Route('/contacts', 'test', 'actionContact'),
 
     ];

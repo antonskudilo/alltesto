@@ -1,14 +1,17 @@
 <?php
 	namespace Core;
 	
-	class View
+	use Twig_Environment;
+    use Twig_Loader_Filesystem;
+
+    class View
 	{
 		public function render(Page $page) {
 			return $this->renderLayout($page, $this->renderView($page));
 		}
 		
 		private function renderLayout(Page $page, $content) {
-			$layoutPath = $_SERVER['DOCUMENT_ROOT'] . "/project/layouts/{$page->layout}.php";
+			$layoutPath = ROOT . "/project/layouts/{$page->layout}.php";
 			
 			if (file_exists($layoutPath)) {
 				ob_start();
@@ -21,15 +24,18 @@
 		}
 		
 		private function renderView(Page $page) {
+
+            $loader = new Twig_Loader_Filesystem(ROOT . '/project/views');
+
+            $twig = new Twig_Environment($loader);
+
 			if ($page->view) {
-				$viewPath = $_SERVER['DOCUMENT_ROOT'] . "/project/views/{$page->view}.php";
+				$viewPath = ROOT . "/project/views/{$page->view}.php";
 				
 				if (file_exists($viewPath)) {
-					ob_start();
 						$data = $page->data;
 						extract($data);
-						include $viewPath;
-					return ob_get_clean();
+                    return $twig->render("{$page->view}.php", $data);
 				} else {
 					echo "Не найден файл с представлением по пути $viewPath"; die();
 				}
